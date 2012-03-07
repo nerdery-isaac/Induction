@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80426CF1508015600C1983C /* DBAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80426CE1508015600C1983C /* DBAdapter.framework */; };
 		F869435E1505A68300CD0C46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F869435D1505A68300CD0C46 /* Cocoa.framework */; };
 		F86943681505A68300CD0C46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F86943661505A68300CD0C46 /* InfoPlist.strings */; };
 		F869437D1505A6F200CD0C46 /* MySQLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F869437C1505A6F200CD0C46 /* MySQLAdapter.m */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F80426CE1508015600C1983C /* DBAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DBAdapter.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug/DBAdapter.framework"; sourceTree = "<group>"; };
 		F869435A1505A68300CD0C46 /* MySQLAdapter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySQLAdapter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F869435D1505A68300CD0C46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F86943601505A68300CD0C46 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -34,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80426CF1508015600C1983C /* DBAdapter.framework in Frameworks */,
 				F86943821505B0CD00CD0C46 /* libmysqlclient_r.dylib in Frameworks */,
 				F869435E1505A68300CD0C46 /* Cocoa.framework in Frameworks */,
 			);
@@ -45,6 +48,7 @@
 		F869434F1505A68300CD0C46 = {
 			isa = PBXGroup;
 			children = (
+				F80426CE1508015600C1983C /* DBAdapter.framework */,
 				F86943631505A68300CD0C46 /* MySQLAdapter */,
 				F869435C1505A68300CD0C46 /* Frameworks */,
 				F869435B1505A68300CD0C46 /* Products */,
@@ -230,6 +234,10 @@
 		F869436D1505A68300CD0C46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MySQLAdapter/MySQLAdapter-Prefix.pch";
 				INFOPLIST_FILE = "MySQLAdapter/MySQLAdapter-Info.plist";
@@ -242,6 +250,10 @@
 		F869436E1505A68300CD0C46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MySQLAdapter/MySQLAdapter-Prefix.pch";
 				INFOPLIST_FILE = "MySQLAdapter/MySQLAdapter-Info.plist";

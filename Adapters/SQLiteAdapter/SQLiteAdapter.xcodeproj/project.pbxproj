@@ -230,6 +230,10 @@
 		F86943A21505C31900CD0C46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SQLiteAdapter/SQLiteAdapter-Prefix.pch";
 				INFOPLIST_FILE = "SQLiteAdapter/SQLiteAdapter-Info.plist";
@@ -242,6 +246,10 @@
 		F86943A31505C31900CD0C46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SQLiteAdapter/SQLiteAdapter-Prefix.pch";
 				INFOPLIST_FILE = "SQLiteAdapter/SQLiteAdapter-Info.plist";

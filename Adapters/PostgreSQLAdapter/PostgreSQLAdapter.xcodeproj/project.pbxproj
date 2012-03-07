@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80426CD1508014E00C1983C /* DBAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80426CC1508014E00C1983C /* DBAdapter.framework */; };
 		F806D62414F2DDF300CE7DB6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F806D62314F2DDF300CE7DB6 /* Cocoa.framework */; };
 		F806D62E14F2DDF300CE7DB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F806D62C14F2DDF300CE7DB6 /* InfoPlist.strings */; };
 		F8804A8C14F2DE950072CFA5 /* PostgreSQLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8804A8A14F2DE950072CFA5 /* PostgreSQLAdapter.m */; };
 		F8804A9114F2DEB20072CFA5 /* libpq.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F8804A9014F2DEB20072CFA5 /* libpq.dylib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F80426DA1508171600C1983C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F80426CC1508014E00C1983C /* DBAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DBAdapter.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug/DBAdapter.framework"; sourceTree = "<group>"; };
 		F806D62014F2DDF300CE7DB6 /* PostgreSQLAdapter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostgreSQLAdapter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F806D62314F2DDF300CE7DB6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F806D62614F2DDF300CE7DB6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -26,8 +40,6 @@
 		F8804A8B14F2DE950072CFA5 /* PostgreSQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostgreSQLAdapter.h; sourceTree = "<group>"; };
 		F8804A8F14F2DEA70072CFA5 /* libpq-fe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libpq-fe.h"; sourceTree = "<group>"; };
 		F8804A9014F2DEB20072CFA5 /* libpq.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpq.dylib; path = usr/lib/libpq.dylib; sourceTree = SDKROOT; };
-		F8B79A2315046F9A00022078 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = ../../DBAdapter.h; sourceTree = "<group>"; };
-		F8B79A2415046F9A00022078 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = ../../SQLAdapter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80426CD1508014E00C1983C /* DBAdapter.framework in Frameworks */,
 				F8804A9114F2DEB20072CFA5 /* libpq.dylib in Frameworks */,
 				F806D62414F2DDF300CE7DB6 /* Cocoa.framework in Frameworks */,
 			);
@@ -63,6 +76,7 @@
 		F806D62214F2DDF300CE7DB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F80426CC1508014E00C1983C /* DBAdapter.framework */,
 				F806D62314F2DDF300CE7DB6 /* Cocoa.framework */,
 				F806D62514F2DDF300CE7DB6 /* Other Frameworks */,
 			);
@@ -83,8 +97,6 @@
 		F806D62914F2DDF300CE7DB6 /* PostgreSQLAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				F8B79A2315046F9A00022078 /* DBAdapter.h */,
-				F8B79A2415046F9A00022078 /* SQLAdapter.h */,
 				F8804A8B14F2DE950072CFA5 /* PostgreSQLAdapter.h */,
 				F8804A8A14F2DE950072CFA5 /* PostgreSQLAdapter.m */,
 				F806D62A14F2DDF300CE7DB6 /* Supporting Files */,
@@ -121,6 +133,7 @@
 				F806D61C14F2DDF300CE7DB6 /* Sources */,
 				F806D61D14F2DDF300CE7DB6 /* Frameworks */,
 				F806D61E14F2DDF300CE7DB6 /* Resources */,
+				F80426DA1508171600C1983C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -240,6 +253,10 @@
 		F806D63314F2DDF300CE7DB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PostgreSQLAdapter/PostgreSQLAdapter-Prefix.pch";
 				INFOPLIST_FILE = "PostgreSQLAdapter/PostgreSQLAdapter-Info.plist";
@@ -252,6 +269,10 @@
 		F806D63414F2DDF300CE7DB6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PostgreSQLAdapter/PostgreSQLAdapter-Prefix.pch";
 				INFOPLIST_FILE = "PostgreSQLAdapter/PostgreSQLAdapter-Info.plist";

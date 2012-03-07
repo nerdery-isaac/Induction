@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SQLAdapter.h"
+#import <DBAdapter/SQLAdapter.h>
 
 @interface MySQLAdapter : NSObject <DBAdapter>
 @end

@@ -273,6 +273,10 @@
 		F8804ACA14F301050072CFA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedisAdapter/RedisAdapter-Prefix.pch";
 				INFOPLIST_FILE = "RedisAdapter/RedisAdapter-Info.plist";
@@ -285,6 +289,10 @@
 		F8804ACB14F301050072CFA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Induction-epgahnuecrodwzcdhxdlpoxxyxye/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RedisAdapter/RedisAdapter-Prefix.pch";
 				INFOPLIST_FILE = "RedisAdapter/RedisAdapter-Info.plist";

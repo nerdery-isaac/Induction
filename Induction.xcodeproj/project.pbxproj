@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80426A91508005D00C1983C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
+		F80426AF1508005D00C1983C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F80426AD1508005D00C1983C /* InfoPlist.strings */; };
+		F80426BD1508009300C1983C /* DBAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80426A81508005D00C1983C /* DBAdapter.framework */; };
+		F80426C4150800E000C1983C /* DBAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = F80426C3150800D600C1983C /* DBAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F80426C5150800E900C1983C /* SQLAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = F80426C2150800D600C1983C /* SQLAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F8D14D0C2DC00950BAF /* AppDelegate.m */; };
 		F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9314D0C2DC00950BAF /* Credits.rtf */; };
 		F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
@@ -40,6 +45,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F80426D41508018400C1983C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8595FAA14C34BB100FD15BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F80426A71508005D00C1983C;
+			remoteInfo = DBAdapter;
+		};
+		F80426D61508169200C1983C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F884AD3114F3017800AEC751 /* PostgreSQLAdapter.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F806D61F14F2DDF300CE7DB6;
+			remoteInfo = PostgreSQLAdapter;
+		};
 		F86943761505A6C300CD0C46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F869436F1505A6C300CD0C46 /* MySQLAdapter.xcodeproj */;
@@ -96,13 +115,6 @@
 			remoteGlobalIDString = F86943C21505DA9800CD0C46;
 			remoteInfo = MongoDBAdapter;
 		};
-		F8C9D03514F301AA005BE0B4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F884AD3114F3017800AEC751 /* PostgreSQLAdapter.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F806D61F14F2DDF300CE7DB6;
-			remoteInfo = PostgreSQLAdapter;
-		};
 		F8C9D03714F301AA005BE0B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F884AD3A14F3017E00AEC751 /* RedisAdapter.xcodeproj */;
@@ -113,6 +125,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F80426C6150800F200C1983C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 11;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F806D64314F2DE2500CE7DB6 /* Copy Database Adapters */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -131,6 +152,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F80426A81508005D00C1983C /* DBAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DBAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80426AC1508005D00C1983C /* DBAdapter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DBAdapter-Info.plist"; sourceTree = "<group>"; };
+		F80426AE1508005D00C1983C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F80426B01508005D00C1983C /* DBAdapter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBAdapter-Prefix.pch"; sourceTree = "<group>"; };
+		F80426C2150800D600C1983C /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLAdapter.h; sourceTree = "<group>"; };
+		F80426C3150800D600C1983C /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAdapter.h; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8202F8D14D0C2DC00950BAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F8202F9414D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -183,10 +210,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F80426A41508005D00C1983C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F80426A91508005D00C1983C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8595FB014C34BB100FD15BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80426BD1508009300C1983C /* DBAdapter.framework in Frameworks */,
 				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
 				F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */,
 			);
@@ -195,6 +231,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F80426AA1508005D00C1983C /* DBAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				F80426C3150800D600C1983C /* DBAdapter.h */,
+				F80426C2150800D600C1983C /* SQLAdapter.h */,
+				F80426AB1508005D00C1983C /* Supporting Files */,
+			);
+			path = DBAdapter;
+			sourceTree = "<group>";
+		};
+		F80426AB1508005D00C1983C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F80426AC1508005D00C1983C /* DBAdapter-Info.plist */,
+				F80426AD1508005D00C1983C /* InfoPlist.strings */,
+				F80426B01508005D00C1983C /* DBAdapter-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F8202F8B14D0C2DC00950BAF /* Induction */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				F8202F8B14D0C2DC00950BAF /* Induction */,
+				F80426AA1508005D00C1983C /* DBAdapter */,
 				F8595FB614C34BB100FD15BE /* Frameworks */,
 				F8595FB414C34BB100FD15BE /* Products */,
 				F873FC4F14D7B9E9002C0ADC /* HTML */,
@@ -329,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				F8595FB314C34BB100FD15BE /* Induction.app */,
+				F80426A81508005D00C1983C /* DBAdapter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,7 +463,38 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		F80426A51508005D00C1983C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F80426C4150800E000C1983C /* DBAdapter.h in Headers */,
+				F80426C5150800E900C1983C /* SQLAdapter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		F80426A71508005D00C1983C /* DBAdapter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F80426B41508005D00C1983C /* Build configuration list for PBXNativeTarget "DBAdapter" */;
+			buildPhases = (
+				F80426A31508005D00C1983C /* Sources */,
+				F80426A41508005D00C1983C /* Frameworks */,
+				F80426A51508005D00C1983C /* Headers */,
+				F80426A61508005D00C1983C /* Resources */,
+				F80426C6150800F200C1983C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DBAdapter;
+			productName = DBAdapter;
+			productReference = F80426A81508005D00C1983C /* DBAdapter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		F8595FB214C34BB100FD15BE /* Induction */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8595FD114C34BB100FD15BE /* Build configuration list for PBXNativeTarget "Induction" */;
@@ -418,7 +507,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				F8C9D03614F301AA005BE0B4 /* PBXTargetDependency */,
+				F80426D51508018400C1983C /* PBXTargetDependency */,
+				F80426D71508169200C1983C /* PBXTargetDependency */,
 				F869437F1505B08D00CD0C46 /* PBXTargetDependency */,
 				F86943B71505CD6D00CD0C46 /* PBXTargetDependency */,
 				F8C9D03814F301AA005BE0B4 /* PBXTargetDependency */,
@@ -472,6 +562,7 @@
 			projectRoot = "";
 			targets = (
 				F8595FB214C34BB100FD15BE /* Induction */,
+				F80426A71508005D00C1983C /* DBAdapter */,
 			);
 		};
 /* End PBXProject section */
@@ -515,6 +606,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F80426A61508005D00C1983C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F80426AF1508005D00C1983C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8595FB114C34BB100FD15BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -536,6 +635,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F80426A31508005D00C1983C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8595FAF14C34BB100FD15BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +664,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F80426D51508018400C1983C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F80426A71508005D00C1983C /* DBAdapter */;
+			targetProxy = F80426D41508018400C1983C /* PBXContainerItemProxy */;
+		};
+		F80426D71508169200C1983C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PostgreSQLAdapter;
+			targetProxy = F80426D61508169200C1983C /* PBXContainerItemProxy */;
+		};
 		F869437F1505B08D00CD0C46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MySQLAdapter;
@@ -573,11 +689,6 @@
 			name = MongoDBAdapter;
 			targetProxy = F89D1D621505EDEC00A55CBD /* PBXContainerItemProxy */;
 		};
-		F8C9D03614F301AA005BE0B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PostgreSQLAdapter;
-			targetProxy = F8C9D03514F301AA005BE0B4 /* PBXContainerItemProxy */;
-		};
 		F8C9D03814F301AA005BE0B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RedisAdapter;
@@ -586,6 +697,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F80426AD1508005D00C1983C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F80426AE1508005D00C1983C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F8202F9314D0C2DC00950BAF /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -613,6 +732,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F80426B51508005D00C1983C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DBAdapter/DBAdapter-Prefix.pch";
+				INFOPLIST_FILE = "DBAdapter/DBAdapter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		F80426B61508005D00C1983C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DBAdapter/DBAdapter-Prefix.pch";
+				INFOPLIST_FILE = "DBAdapter/DBAdapter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
 		F8595FCF14C34BB100FD15BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -691,6 +838,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F80426B41508005D00C1983C /* Build configuration list for PBXNativeTarget "DBAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F80426B51508005D00C1983C /* Debug */,
+				F80426B61508005D00C1983C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F8595FAD14C34BB100FD15BE /* Build configuration list for PBXProject "Induction" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DBAdapter.h"
+#import <DBAdapter/DBAdapter.h>
 
 
 @interface MongoDBAdapter : NSObject <DBAdapter>

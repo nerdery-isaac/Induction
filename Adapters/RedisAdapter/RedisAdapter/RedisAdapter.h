@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "DBAdapter.h"
+#import <DBAdapter/DBAdapter.h>
 
 @class RedisResultSet;
 

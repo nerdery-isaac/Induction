@@ -37,8 +37,8 @@ typedef enum {
 @protocol DBDatabase <NSObject>
 
 @property (nonatomic, readonly) id <DBConnection> connection;
-@property (nonatomic, readonly) NSOrderedSet *dataSourceGroupNames;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSOrderedSet *dataSourceGroupNames;
 
 - (NSArray *)dataSourcesForGroupNamed:(NSString *)groupName;
 

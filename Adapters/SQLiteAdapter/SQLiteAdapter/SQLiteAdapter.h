@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "SQLAdapter.h"
+#import <DBAdapter/SQLAdapter.h>
 
 extern NSString * const PostgreSQLErrorDomain;
 
