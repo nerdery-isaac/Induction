@@ -33,8 +33,17 @@
 //  More info at <http://code.google.com/p/sequel-pro/>
 
 //#import <SPMySQL/SPMySQL.h>
+/**
+ * Connection proxy state constants.  (from SPMySQLConnectionProxy.h)
+ */
+typedef enum {
+	SPMySQLProxyIdle				= 0,
+	SPMySQLProxyConnecting			= 1,
+	SPMySQLProxyWaitingForAuth		= 2,
+	SPMySQLProxyConnected			= 3,
+	SPMySQLProxyForwardingFailed	= 4
+} SPMySQLConnectionProxyState;
 
-typedef NSUInteger SPMySQLConnectionProxyState;
 
 @interface SPSSHTunnel : NSObject //<SPMySQLConnectionProxy>
 {

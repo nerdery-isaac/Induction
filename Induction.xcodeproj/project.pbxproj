@@ -33,6 +33,17 @@
 		28B609C9168E61F100C92AE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FBC14C34BB100FD15BE /* Foundation.framework */; };
 		28B609CA168E61F700C92AE3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FBA14C34BB100FD15BE /* AppKit.framework */; };
 		28B609CF168E627100C92AE3 /* sshTunnelAssistant in Resources */ = {isa = PBXBuildFile; fileRef = 28B609AF168E5DA000C92AE3 /* sshTunnelAssistant */; };
+		28B609D0168E656800C92AE3 /* SPSSHTunnel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609C3168E5EEF00C92AE3 /* SPSSHTunnel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D1168E656800C92AE3 /* SPSSHTunnel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609C3168E5EEF00C92AE3 /* SPSSHTunnel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D4168E65B200C92AE3 /* SPThreadAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609D3168E65B100C92AE3 /* SPThreadAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D5168E65B200C92AE3 /* SPThreadAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609D3168E65B100C92AE3 /* SPThreadAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D6168E65FE00C92AE3 /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609C7168E60F900C92AE3 /* SPConstants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D7168E65FF00C92AE3 /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609C7168E60F900C92AE3 /* SPConstants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D8168E676100C92AE3 /* SPKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609AA168E5D4A00C92AE3 /* SPKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609D9168E676100C92AE3 /* SPKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609AA168E5D4A00C92AE3 /* SPKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609DA168E679300C92AE3 /* SPAlertSheets.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609A8168E5D4A00C92AE3 /* SPAlertSheets.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609DB168E679400C92AE3 /* SPAlertSheets.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609A8168E5D4A00C92AE3 /* SPAlertSheets.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609DC168E67B200C92AE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86CEC5C157318C900F6AD9E /* Security.framework */; };
 		D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
 		F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
 		F8129AF0158EB9D7009BFE23 /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
@@ -244,6 +255,8 @@
 		28B609C3168E5EEF00C92AE3 /* SPSSHTunnel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSSHTunnel.m; sourceTree = "<group>"; };
 		28B609C6168E60F900C92AE3 /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPConstants.h; sourceTree = "<group>"; };
 		28B609C7168E60F900C92AE3 /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
+		28B609D2168E65B100C92AE3 /* SPThreadAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPThreadAdditions.h; sourceTree = "<group>"; };
+		28B609D3168E65B100C92AE3 /* SPThreadAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPThreadAdditions.m; sourceTree = "<group>"; };
 		8495A64B8D754525BD0656FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8129AED158EB991009BFE23 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -338,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B609DC168E67B200C92AE3 /* Security.framework in Frameworks */,
 				F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */,
 				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
 				D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */,
@@ -374,6 +388,8 @@
 				28B609AA168E5D4A00C92AE3 /* SPKeychain.m */,
 				28B609C2168E5EEF00C92AE3 /* SPSSHTunnel.h */,
 				28B609C3168E5EEF00C92AE3 /* SPSSHTunnel.m */,
+				28B609D2168E65B100C92AE3 /* SPThreadAdditions.h */,
+				28B609D3168E65B100C92AE3 /* SPThreadAdditions.m */,
 			);
 			path = SequelPro;
 			sourceTree = "<group>";
@@ -939,6 +955,11 @@
 				F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */,
 				F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */,
 				F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */,
+				28B609D0168E656800C92AE3 /* SPSSHTunnel.m in Sources */,
+				28B609D4168E65B200C92AE3 /* SPThreadAdditions.m in Sources */,
+				28B609D6168E65FE00C92AE3 /* SPConstants.m in Sources */,
+				28B609D8168E676100C92AE3 /* SPKeychain.m in Sources */,
+				28B609DB168E679400C92AE3 /* SPAlertSheets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,6 +987,11 @@
 				F8ABFC5315601461005F0AA7 /* DateCell.m in Sources */,
 				F86CEC5A1573189F00F6AD9E /* NSString+SymlinksAndAliases.m in Sources */,
 				F86CEC5B1573189F00F6AD9E /* PFMoveApplication.m in Sources */,
+				28B609D1168E656800C92AE3 /* SPSSHTunnel.m in Sources */,
+				28B609D5168E65B200C92AE3 /* SPThreadAdditions.m in Sources */,
+				28B609D7168E65FF00C92AE3 /* SPConstants.m in Sources */,
+				28B609D9168E676100C92AE3 /* SPKeychain.m in Sources */,
+				28B609DA168E679300C92AE3 /* SPAlertSheets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

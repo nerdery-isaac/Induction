@@ -37,6 +37,7 @@
 #import "SPKeychain.h"
 #import "SPAlertSheets.h"
 #import "SPThreadAdditions.h"
+#import "SPConstants.h"
 
 #import <netinet/in.h>
 #import <CommonCrypto/CommonDigest.h>
