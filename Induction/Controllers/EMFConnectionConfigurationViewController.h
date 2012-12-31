@@ -51,4 +51,15 @@
 
 - (IBAction)connect:(id)sender;
 
+
+
+@property (nonatomic, strong) NSString *urlString;
+@property (nonatomic, strong) NSString *scheme;
+@property (nonatomic, strong) NSString *hostname;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSNumber *port;
+@property (nonatomic, strong) NSString *database;
+
+
 @end

@@ -114,8 +114,6 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 @interface EMFConnectionConfigurationViewController ()
 @property (readwrite, nonatomic, getter = isConnecting) BOOL connecting;
-
-- (void)bindURLParameterControl:(NSControl *)control;
 @end
 
 @implementation EMFConnectionConfigurationViewController
@@ -134,10 +132,6 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @synthesize connectionProgressIndicator = _connectionProgressIndicator;
 
 - (void)awakeFromNib {
-    for (NSControl *control in [NSArray arrayWithObjects:self.URLField, self.hostnameField, self.usernameField, self.passwordField, self.portField, self.databaseField, nil]) {
-        [self bindURLParameterControl:control];
-    }
-    
     self.schemePopupButton.target = self;
     self.schemePopupButton.action = @selector(schemePopupButtonDidChange:);
     
@@ -158,26 +152,19 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         self.connectionURL = [[NSUserDefaults standardUserDefaults] URLForKey:kInductionPreviousConnectionURLKey];
     }
     
+    self.urlString = self.connectionURL.absoluteString;
+    self.scheme = self.connectionURL.scheme;
+    self.hostname = self.connectionURL.host;
+    self.username = self.connectionURL.user;
+    self.password = self.connectionURL.password;
+    self.port = self.connectionURL.port;
+    self.database = self.connectionURL.path;
+    [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:self.scheme]];
+    
     // TODO Make less hacky
-    [self.schemePopupButton selectItemWithTitle:[self.connectionURL scheme]];
+//    [self.schemePopupButton selectItemWithTitle:[self.connectionURL scheme]];
     
     [self.URLField becomeFirstResponder];
-}
-
-- (void)bindURLParameterControl:(NSControl *)control {
-    if ([control isEqual:self.URLField]) {
-        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL" options:[NSDictionary dictionaryWithObject:NSStringFromClass([DBRemovePasswordURLValueTransformer class]) forKey:NSValueTransformerNameBindingOption]];
-    } else if ([control isEqual:self.hostnameField]) {
-        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.host" options:nil];
-    } else if ([control isEqual:self.usernameField]) {
-        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.user" options:nil];
-    } else if ([control isEqual:self.passwordField]) {
-        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.password" options:nil];
-    } else if ([control isEqual:self.portField]) {
-        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.port" options:nil];
-    } else if ([control isEqual:self.databaseField]) {
-        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.path" options:nil];
-    }
 }
 
 #pragma mark - IBAction
@@ -221,8 +208,23 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 #pragma mark -
 
+- (NSString *)defaultPortStringForDatabaseScheme:(NSString *)scheme
+{
+    if ([scheme isEqualToString:@"postgres"]) {
+        return @"5432";
+    }
+    if ([scheme isEqualToString:@"mysql"]) {
+        return @"3306";
+    }
+    if ([scheme isEqualToString:@"mongodb"]) {
+        return @"27017";
+    }
+    return nil;
+}
+
 - (void)schemePopupButtonDidChange:(id)sender {
     self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([self.schemePopupButton titleOfSelectedItem], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
+    [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:[self.schemePopupButton titleOfSelectedItem]]];
 }
 
 #pragma mark - NSControl Delegate Methods
@@ -264,16 +266,8 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         
         self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([self.schemePopupButton titleOfSelectedItem], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
         
-        if ([[url scheme] isEqualToString:@"postgres"]) {
-            [[self.portField cell] setPlaceholderString:@"5432"];
-        } else if ([[url scheme] isEqualToString:@"mysql"]) {
-            [[self.portField cell] setPlaceholderString:@"3306"];
-        } else if ([[url scheme] isEqualToString:@"mongodb"]) {
-            [[self.portField cell] setPlaceholderString:@"27017"];
-        }
+        [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:[url scheme]]];
     }
-    
-    [self bindURLParameterControl:control];
 }
 
 
