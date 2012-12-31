@@ -227,8 +227,11 @@
     list.count = 2;
     list.attr  = attributes;
 	
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     if (SecKeychainSearchCreateFromAttributes(NULL, kSecGenericPasswordItemClass, &list, &search) == noErr) {
 		while (SecKeychainSearchCopyNext(search, &item) == noErr) {
+#pragma clang diagnostic pop
 			CFRelease(item);
 			numberOfItemsFound++;
 		}

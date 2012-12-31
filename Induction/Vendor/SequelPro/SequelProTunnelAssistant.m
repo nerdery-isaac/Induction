@@ -100,6 +100,7 @@ int main(int argc, const char *argv[])
 			// If retrieving the password failed, log an error and fall back to requesting from the GUI
 			NSLog(@"SSH Tunnel: specified keychain password not found");
 			argument = [NSString stringWithFormat:NSLocalizedString(@"The SSH password could not be loaded from the keychain; please enter the SSH password for %@:", @"Prompt for SSH password when keychain fetch failed"), connectionName];
+            [keychain release];
 		}
 
 		// If the password method is set to request the password from the tunnel instance, do so.

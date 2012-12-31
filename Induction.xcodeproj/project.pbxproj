@@ -44,6 +44,18 @@
 		28B609DA168E679300C92AE3 /* SPAlertSheets.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609A8168E5D4A00C92AE3 /* SPAlertSheets.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28B609DB168E679400C92AE3 /* SPAlertSheets.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609A8168E5D4A00C92AE3 /* SPAlertSheets.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28B609DC168E67B200C92AE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86CEC5C157318C900F6AD9E /* Security.framework */; };
+		28B609DE1692174000C92AE3 /* SSHQuestionDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B609DD1692174000C92AE3 /* SSHQuestionDialog.xib */; };
+		28B609DF1692174000C92AE3 /* SSHQuestionDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B609DD1692174000C92AE3 /* SSHQuestionDialog.xib */; };
+		28B609E2169217D000C92AE3 /* SPDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609E1169217D000C92AE3 /* SPDataAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609E3169217D000C92AE3 /* SPDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609E1169217D000C92AE3 /* SPDataAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609E6169217FC00C92AE3 /* SPFileManagerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609E5169217FC00C92AE3 /* SPFileManagerAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609E7169217FC00C92AE3 /* SPFileManagerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609E5169217FC00C92AE3 /* SPFileManagerAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609E91692190300C92AE3 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B609E81692190300C92AE3 /* libcrypto.dylib */; };
+		28B609EA1692190B00C92AE3 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B609E81692190300C92AE3 /* libcrypto.dylib */; };
+		28B609EC1692192D00C92AE3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B609EB1692192D00C92AE3 /* libz.dylib */; };
+		28B609ED1692193400C92AE3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B609EB1692192D00C92AE3 /* libz.dylib */; };
+		28B609F016921B0D00C92AE3 /* SPMainThreadTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609EF16921B0C00C92AE3 /* SPMainThreadTrampoline.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		28B609F116921B0D00C92AE3 /* SPMainThreadTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B609EF16921B0C00C92AE3 /* SPMainThreadTrampoline.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
 		F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
 		F8129AF0158EB9D7009BFE23 /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
@@ -257,6 +269,15 @@
 		28B609C7168E60F900C92AE3 /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
 		28B609D2168E65B100C92AE3 /* SPThreadAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPThreadAdditions.h; sourceTree = "<group>"; };
 		28B609D3168E65B100C92AE3 /* SPThreadAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPThreadAdditions.m; sourceTree = "<group>"; };
+		28B609DD1692174000C92AE3 /* SSHQuestionDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSHQuestionDialog.xib; sourceTree = "<group>"; };
+		28B609E0169217D000C92AE3 /* SPDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataAdditions.h; sourceTree = "<group>"; };
+		28B609E1169217D000C92AE3 /* SPDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDataAdditions.m; sourceTree = "<group>"; };
+		28B609E4169217FB00C92AE3 /* SPFileManagerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPFileManagerAdditions.h; sourceTree = "<group>"; };
+		28B609E5169217FC00C92AE3 /* SPFileManagerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPFileManagerAdditions.m; sourceTree = "<group>"; };
+		28B609E81692190300C92AE3 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		28B609EB1692192D00C92AE3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		28B609EE16921B0B00C92AE3 /* SPMainThreadTrampoline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMainThreadTrampoline.h; sourceTree = "<group>"; };
+		28B609EF16921B0C00C92AE3 /* SPMainThreadTrampoline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMainThreadTrampoline.m; sourceTree = "<group>"; };
 		8495A64B8D754525BD0656FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8129AED158EB991009BFE23 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -351,6 +372,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B609ED1692193400C92AE3 /* libz.dylib in Frameworks */,
+				28B609E91692190300C92AE3 /* libcrypto.dylib in Frameworks */,
 				28B609DC168E67B200C92AE3 /* Security.framework in Frameworks */,
 				F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */,
 				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
@@ -362,6 +385,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B609EC1692192D00C92AE3 /* libz.dylib in Frameworks */,
+				28B609EA1692190B00C92AE3 /* libcrypto.dylib in Frameworks */,
 				F86CEC5F157318CE00F6AD9E /* SystemConfiguration.framework in Frameworks */,
 				F86CEC5D157318C900F6AD9E /* Security.framework in Frameworks */,
 				F8ABFC6415601461005F0AA7 /* Cocoa.framework in Frameworks */,
@@ -390,6 +415,13 @@
 				28B609C3168E5EEF00C92AE3 /* SPSSHTunnel.m */,
 				28B609D2168E65B100C92AE3 /* SPThreadAdditions.h */,
 				28B609D3168E65B100C92AE3 /* SPThreadAdditions.m */,
+				28B609E0169217D000C92AE3 /* SPDataAdditions.h */,
+				28B609E1169217D000C92AE3 /* SPDataAdditions.m */,
+				28B609E4169217FB00C92AE3 /* SPFileManagerAdditions.h */,
+				28B609E5169217FC00C92AE3 /* SPFileManagerAdditions.m */,
+				28B609EE16921B0B00C92AE3 /* SPMainThreadTrampoline.h */,
+				28B609EF16921B0C00C92AE3 /* SPMainThreadTrampoline.m */,
+				28B609DD1692174000C92AE3 /* SSHQuestionDialog.xib */,
 			);
 			path = SequelPro;
 			sourceTree = "<group>";
@@ -545,6 +577,8 @@
 		F8595FB614C34BB100FD15BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28B609EB1692192D00C92AE3 /* libz.dylib */,
+				28B609E81692190300C92AE3 /* libcrypto.dylib */,
 				28B609BC168E5DCA00C92AE3 /* libicucore.dylib */,
 				F8129AED158EB991009BFE23 /* Sparkle.framework */,
 				F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */,
@@ -835,6 +869,7 @@
 				F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */,
 				F8B3FC18153745330007712F /* EMFExportView.xib in Resources */,
 				F87D134D159269C400FD1087 /* Induction.icns in Resources */,
+				28B609DE1692174000C92AE3 /* SSHQuestionDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +892,7 @@
 				F8ABFC7515601461005F0AA7 /* EMFExportCSVView.xib in Resources */,
 				F8ABFC7615601461005F0AA7 /* EMFExportView.xib in Resources */,
 				F87D134E159269CE00FD1087 /* Induction.icns in Resources */,
+				28B609DF1692174000C92AE3 /* SSHQuestionDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +996,9 @@
 				28B609D6168E65FE00C92AE3 /* SPConstants.m in Sources */,
 				28B609D8168E676100C92AE3 /* SPKeychain.m in Sources */,
 				28B609DB168E679400C92AE3 /* SPAlertSheets.m in Sources */,
+				28B609E2169217D000C92AE3 /* SPDataAdditions.m in Sources */,
+				28B609E6169217FC00C92AE3 /* SPFileManagerAdditions.m in Sources */,
+				28B609F016921B0D00C92AE3 /* SPMainThreadTrampoline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,6 +1031,9 @@
 				28B609D7168E65FF00C92AE3 /* SPConstants.m in Sources */,
 				28B609D9168E676100C92AE3 /* SPKeychain.m in Sources */,
 				28B609DA168E679300C92AE3 /* SPAlertSheets.m in Sources */,
+				28B609E3169217D000C92AE3 /* SPDataAdditions.m in Sources */,
+				28B609E7169217FC00C92AE3 /* SPFileManagerAdditions.m in Sources */,
+				28B609F116921B0D00C92AE3 /* SPMainThreadTrampoline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

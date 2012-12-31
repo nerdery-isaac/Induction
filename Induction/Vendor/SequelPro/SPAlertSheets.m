@@ -31,6 +31,7 @@
 //  More info at <http://code.google.com/p/sequel-pro/>
 
 #import "SPAlertSheets.h"
+#import "SPMainThreadTrampoline.h"
 
 /**
  * Provide a simple alias of NSBeginAlertSheet, with a few differences:
