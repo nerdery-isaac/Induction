@@ -123,18 +123,11 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @dynamic isConnecting;
 @synthesize URLField = _URLField;
 @synthesize schemePopupButton = _schemePopupButton;
-@synthesize hostnameField = _hostnameField;
-@synthesize usernameField = _usernameField;
-@synthesize passwordField = _passwordField;
 @synthesize portField = _portField;
-@synthesize databaseField = _databaseField;
 @synthesize connectButton = _connectButton;
 @synthesize connectionProgressIndicator = _connectionProgressIndicator;
 
 - (void)awakeFromNib {
-    self.schemePopupButton.target = self;
-    self.schemePopupButton.action = @selector(schemePopupButtonDidChange:);
-    
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
         NSBundle *bundle = [NSBundle bundleWithPath:path];
         [bundle loadAndReturnError:nil];
@@ -160,9 +153,6 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     self.port = self.connectionURL.port;
     self.database = self.connectionURL.path;
     [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:self.scheme]];
-    
-    // TODO Make less hacky
-//    [self.schemePopupButton selectItemWithTitle:[self.connectionURL scheme]];
     
     [self.URLField becomeFirstResponder];
 }
@@ -222,9 +212,9 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     return nil;
 }
 
-- (void)schemePopupButtonDidChange:(id)sender {
-    self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([self.schemePopupButton titleOfSelectedItem], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
-    [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:[self.schemePopupButton titleOfSelectedItem]]];
+- (IBAction)schemePopupButtonDidChange:(id)sender {
+    self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents(self.scheme, self.hostname, self.username, self.password, self.port, self.database)];
+    [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:self.scheme]];
 }
 
 #pragma mark - NSControl Delegate Methods
@@ -242,17 +232,17 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         
         NSString *scheme = [url scheme];
         if (!scheme) {
-            scheme = [[self.schemePopupButton selectedCell] title];
+            scheme = self.scheme;
         }
         
         NSString *password = [url password];
         if (!password) {
-            password = [self.passwordField objectValue];
+            password = self.password;
         }
         
         self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents(scheme, [url host], [url user], password, [url port], [url path])];
     } else {
-        self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([[self.schemePopupButton selectedCell] title], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
+        self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents(self.scheme, self.hostname, self.username, self.password, self.port, self.database)];
     }
 }
 
@@ -262,9 +252,9 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     if ([control isEqual:self.URLField]) {
         NSURL *url = [NSURL URLWithString:[self.URLField stringValue]];
         
-        [self.schemePopupButton selectItemWithTitle:[url scheme]];
+        self.scheme = [url scheme];
         
-        self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([self.schemePopupButton titleOfSelectedItem], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
+        self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents(self.scheme, self.hostname, self.username, self.password, self.port, self.database)];
         
         [[self.portField cell] setPlaceholderString:[self defaultPortStringForDatabaseScheme:[url scheme]]];
     }

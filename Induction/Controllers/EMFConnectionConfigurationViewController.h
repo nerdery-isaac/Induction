@@ -41,17 +41,14 @@
 
 @property (weak) IBOutlet NSTextField *URLField;
 @property (weak) IBOutlet NSPopUpButton *schemePopupButton;
-@property (weak) IBOutlet NSTextField *hostnameField;
-@property (weak) IBOutlet NSTextField *usernameField;
-@property (weak) IBOutlet NSTextField *passwordField;
 @property (weak) IBOutlet NSTextField *portField;
-@property (weak) IBOutlet NSTextField *databaseField;
 @property (weak) IBOutlet NSButton *connectButton;
 @property (weak) IBOutlet NSProgressIndicator *connectionProgressIndicator;
 
 - (IBAction)connect:(id)sender;
 
 
+- (IBAction)schemePopupButtonDidChange:(id)sender;
 
 @property (nonatomic, strong) NSString *urlString;
 @property (nonatomic, strong) NSString *scheme;
