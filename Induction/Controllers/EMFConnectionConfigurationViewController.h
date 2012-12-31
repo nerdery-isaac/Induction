@@ -51,6 +51,7 @@
 - (IBAction)schemePopupButtonDidChange:(id)sender;
 
 @property (nonatomic, strong) NSString *urlString;
+
 @property (nonatomic, strong) NSString *scheme;
 @property (nonatomic, strong) NSString *hostname;
 @property (nonatomic, strong) NSString *username;
@@ -58,5 +59,9 @@
 @property (nonatomic, strong) NSNumber *port;
 @property (nonatomic, strong) NSString *database;
 
+@property (nonatomic, strong) NSString *sshHostname;
+@property (nonatomic, strong) NSString *sshUsername;
+@property (nonatomic, strong) NSString *sshPassword;
+@property (nonatomic, strong) NSNumber *sshPort;
 
 @end
