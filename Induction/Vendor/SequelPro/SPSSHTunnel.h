@@ -44,6 +44,9 @@ typedef enum {
 	SPMySQLProxyForwardingFailed	= 4
 } SPMySQLConnectionProxyState;
 
+@class SPSSHTunnel;
+
+typedef void (^SPSSHTunnelStateChangeBlock)(SPSSHTunnel *theTunnel);
 
 @interface SPSSHTunnel : NSObject //<SPMySQLConnectionProxy>
 {
@@ -95,6 +98,8 @@ typedef enum {
 @property (readonly) BOOL passwordPromptCancelled;
 @property (readwrite) BOOL connectionMuxingEnabled;
 @property (readonly) BOOL taskExitedUnexpectedly;
+
+@property (nonatomic, copy) SPSSHTunnelStateChangeBlock stateChangeBlock;
 
 - (id)initToHost:(NSString *)theHost port:(NSInteger)thePort login:(NSString *)theLogin tunnellingToPort:(NSInteger)targetPort onHost:(NSString *)targetHost;
 - (BOOL)setConnectionStateChangeSelector:(SEL)theStateChangeSelector delegate:(id)theDelegate;
