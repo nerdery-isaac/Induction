@@ -124,20 +124,22 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @synthesize connecting = _connecting;
 @dynamic isConnecting;
 @synthesize URLField = _URLField;
-@synthesize schemePopupButton = _schemePopupButton;
 @synthesize portField = _portField;
 @synthesize connectButton = _connectButton;
 @synthesize connectionProgressIndicator = _connectionProgressIndicator;
 
 - (void)awakeFromNib {
+    NSMutableArray *schemes = [NSMutableArray array];
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
         NSBundle *bundle = [NSBundle bundleWithPath:path];
         [bundle loadAndReturnError:nil];
         
         if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
-            [self.schemePopupButton addItemWithTitle:[[bundle principalClass] primaryURLScheme]];
+            [schemes addObject:[[bundle principalClass] primaryURLScheme]];
         }
     }
+    self.schemes = [NSArray arrayWithArray:schemes];
+    NSLog(@"self.schemes: %@", self.schemes);
 
     // TODO Check against registered adapters to detect appropriate URL on pasteboard
     NSURL *pasteboardURL = [NSURL URLWithString:[[NSPasteboard generalPasteboard] stringForType:NSPasteboardTypeString]];
@@ -161,7 +163,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 #pragma mark - IBAction
 
-- (void)connect:(id)sender {    
+- (void)connect:(id)sender {
     self.connecting = YES;
 
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
@@ -171,55 +173,86 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
             id <DBAdapter> adapter = (id <DBAdapter>)[bundle principalClass];
             if ([adapter canConnectToURL:self.connectionURL]) {
-                self.sshTunnel = [[SPSSHTunnel alloc]
-                                  initToHost:self.sshHostname
-                                  port:self.sshPort.unsignedIntegerValue
-                                  login:self.sshUsername
-                                  tunnellingToPort:self.port.unsignedIntegerValue ? self.port.unsignedIntegerValue : [self defaultPortStringForDatabaseScheme:self.scheme].integerValue
-                                  onHost:self.hostname];
-                [self.sshTunnel setParentWindow:self.view.window];
-                __weak EMFConnectionConfigurationViewController *weakSelf = self;
-                [self.sshTunnel setStateChangeBlock:^(SPSSHTunnel *theTunnel) {
-                    //        if (cancellingConnection) return;
-                    
-                    NSInteger newState = [theTunnel state];
-                    
-                    // If the user cancelled the password prompt dialog, continue with no further action.
-                    if ([theTunnel passwordPromptCancelled]) {
-                        //            [self _restoreConnectionInterface];
-                        
+                switch (self.selectedTab) {
+                    case kEMFConnectionConfigurationViewControllerStandardTab:
+                        [self doConnect:adapter];
                         return;
-                    }
-                    
-                    if (newState == SPMySQLProxyIdle) {
+                        break;
                         
-                        // If the connection closed unexpectedly, and muxing was enabled, disable muxing an re-try.
-                        if ([theTunnel taskExitedUnexpectedly] && [theTunnel connectionMuxingEnabled]) {
-                            [theTunnel setConnectionMuxingEnabled:NO];
-                            [theTunnel connect];
-                            return;
-                        }
+                    case kEMFConnectionConfigurationViewControllerSshTunnelTab:
+                        [self doSshConnect:adapter];
+                        return;
+                        break;
                         
-                        //            [[self onMainThread] failConnectionWithTitle:NSLocalizedString(@"SSH connection failed!", @"SSH connection failed title") errorMessage:[theTunnel lastError] detail:[sshTunnel debugMessages] rawErrorText:[theTunnel lastError]];
-                    } else if (newState == SPMySQLProxyConnected) {
-                        NSURL *newUrl = [NSURL URLWithString:DBURLStringFromComponents(self.scheme, @"127.0.0.1", self.username, self.password, @(theTunnel.localPort), self.database)];
-                        [adapter connectToURL:newUrl success:^(id <DBConnection> connection) {
-                            [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
-                            [self.delegate connectionConfigurationController:weakSelf didConnectWithConnection:connection];
-                        } failure:^(NSError *error){
-                            self.connecting = NO;
-                            
-                            [weakSelf presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
-                        }];
-                    } else {
-                    }
-                }];
-                [self.sshTunnel connect];
-                
+                    default:
+                        return;
+                }
                 break;
             }
         }
     }
+}
+
+- (void)doConnect:(id<DBAdapter>)adapter
+{
+    [adapter connectToURL:self.connectionURL success:^(id <DBConnection> connection) {
+        [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
+        [self.delegate connectionConfigurationController:self didConnectWithConnection:connection];
+    } failure:^(NSError *error){
+        self.connecting = NO;
+        
+        [self presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
+    }];
+}
+
+- (void)doSshConnect:(id<DBAdapter>)adapter
+{
+    self.sshTunnel = [[SPSSHTunnel alloc]
+                      initToHost:self.sshHostname
+                      port:self.sshPort.unsignedIntegerValue
+                      login:self.sshUsername
+                      tunnellingToPort:(self.port.unsignedIntegerValue
+                                        ? self.port.unsignedIntegerValue
+                                        : [self defaultPortStringForDatabaseScheme:self.scheme].integerValue)
+                      onHost:self.hostname];
+    [self.sshTunnel setParentWindow:self.view.window];
+    __weak EMFConnectionConfigurationViewController *weakSelf = self;
+    [self.sshTunnel setStateChangeBlock:^(SPSSHTunnel *theTunnel) {
+//        if (cancellingConnection) return;
+        
+        NSInteger newState = [theTunnel state];
+        
+        // If the user cancelled the password prompt dialog, continue with no further action.
+        if ([theTunnel passwordPromptCancelled]) {
+//            [self _restoreConnectionInterface];
+            
+            return;
+        }
+        
+        if (newState == SPMySQLProxyIdle) {
+            
+            // If the connection closed unexpectedly, and muxing was enabled, disable muxing an re-try.
+            if ([theTunnel taskExitedUnexpectedly] && [theTunnel connectionMuxingEnabled]) {
+                [theTunnel setConnectionMuxingEnabled:NO];
+                [theTunnel connect];
+                return;
+            }
+            
+//            [[self onMainThread] failConnectionWithTitle:NSLocalizedString(@"SSH connection failed!", @"SSH connection failed title") errorMessage:[theTunnel lastError] detail:[sshTunnel debugMessages] rawErrorText:[theTunnel lastError]];
+        } else if (newState == SPMySQLProxyConnected) {
+            NSURL *newUrl = [NSURL URLWithString:DBURLStringFromComponents(self.scheme, @"127.0.0.1", self.username, self.password, @(theTunnel.localPort), self.database)];
+            [adapter connectToURL:newUrl success:^(id <DBConnection> connection) {
+                [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
+                [self.delegate connectionConfigurationController:weakSelf didConnectWithConnection:connection];
+            } failure:^(NSError *error){
+                self.connecting = NO;
+                
+                [weakSelf presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
+            }];
+        } else {
+        }
+    }];
+    [self.sshTunnel connect];
 }
 
 - (void)setConnecting:(BOOL)connecting {

@@ -32,6 +32,12 @@
                  didConnectWithConnection:(id <DBConnection>)connection;
 @end
 
+typedef enum {
+    kEMFConnectionConfigurationViewControllerStandardTab = 0,
+    kEMFConnectionConfigurationViewControllerSshTunnelTab,
+    kEMFConnectionConfigurationViewControllerNumberOfTabs
+} EMFConnectionConfigurationViewControllerTab;
+
 @interface EMFConnectionConfigurationViewController : NSViewController <NSTextFieldDelegate>
 
 @property (strong) id <EMFConnectionConfigurationViewControllerProtocol> delegate;
@@ -40,7 +46,6 @@
 @property (readonly) BOOL isConnecting;
 
 @property (weak) IBOutlet NSTextField *URLField;
-@property (weak) IBOutlet NSPopUpButton *schemePopupButton;
 @property (weak) IBOutlet NSTextField *portField;
 @property (weak) IBOutlet NSButton *connectButton;
 @property (weak) IBOutlet NSProgressIndicator *connectionProgressIndicator;
@@ -50,8 +55,11 @@
 
 - (IBAction)schemePopupButtonDidChange:(id)sender;
 
+@property (nonatomic, assign) EMFConnectionConfigurationViewControllerTab selectedTab;
+
 @property (nonatomic, strong) NSString *urlString;
 
+@property (nonatomic, strong) NSArray *schemes;
 @property (nonatomic, strong) NSString *scheme;
 @property (nonatomic, strong) NSString *hostname;
 @property (nonatomic, strong) NSString *username;
