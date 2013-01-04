@@ -1,6 +1,6 @@
 [submodule "Adapters"]
 	path = Adapters
-	url = https://github.com/Induction/Adapters.git
+url=git@github.com:nerdery-isaac/Adapters.git
 [submodule "LiesDamnedLies"]
 	path = LiesDamnedLies
 	url = https://github.com/Induction/LiesDamnedLies.git

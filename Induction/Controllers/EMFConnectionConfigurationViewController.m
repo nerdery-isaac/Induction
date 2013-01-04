@@ -172,7 +172,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         
         if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
             id <DBAdapter> adapter = (id <DBAdapter>)[bundle principalClass];
-            if ([adapter canConnectToURL:self.connectionURL]) {
+            if ([adapter canConnectWithScheme:self.scheme]) {
                 switch (self.selectedTab) {
                     case kEMFConnectionConfigurationViewControllerStandardTab:
                         [self doConnect:adapter];
@@ -195,14 +195,19 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 - (void)doConnect:(id<DBAdapter>)adapter
 {
-    [adapter connectToURL:self.connectionURL success:^(id <DBConnection> connection) {
-        [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
-        [self.delegate connectionConfigurationController:self didConnectWithConnection:connection];
-    } failure:^(NSError *error){
-        self.connecting = NO;
-        
-        [self presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
-    }];
+    [adapter connectToScheme:self.scheme
+                        host:self.hostname
+                    username:self.username
+                    password:self.password
+                        port:self.port.unsignedIntegerValue
+                        path:self.database
+                     success:^(id <DBConnection> connection) {
+                         [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
+                         [self.delegate connectionConfigurationController:self didConnectWithConnection:connection];
+                     } failure:^(NSError *error){
+                         self.connecting = NO;
+                         [self presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
+                     }];
 }
 
 - (void)doSshConnect:(id<DBAdapter>)adapter
@@ -240,15 +245,19 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
             
 //            [[self onMainThread] failConnectionWithTitle:NSLocalizedString(@"SSH connection failed!", @"SSH connection failed title") errorMessage:[theTunnel lastError] detail:[sshTunnel debugMessages] rawErrorText:[theTunnel lastError]];
         } else if (newState == SPMySQLProxyConnected) {
-            NSURL *newUrl = [NSURL URLWithString:DBURLStringFromComponents(self.scheme, @"127.0.0.1", self.username, self.password, @(theTunnel.localPort), self.database)];
-            [adapter connectToURL:newUrl success:^(id <DBConnection> connection) {
-                [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
-                [self.delegate connectionConfigurationController:weakSelf didConnectWithConnection:connection];
-            } failure:^(NSError *error){
-                self.connecting = NO;
-                
-                [weakSelf presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
-            }];
+            [adapter connectToScheme:self.scheme
+                                host:@"127.0.0.1"
+                            username:self.username
+                            password:self.password
+                                port:theTunnel.localPort
+                                path:self.database
+                             success:^(id <DBConnection> connection) {
+                                 [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
+                                 [self.delegate connectionConfigurationController:weakSelf didConnectWithConnection:connection];
+                             } failure:^(NSError *error){
+                                 self.connecting = NO;
+                                 [weakSelf presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
+                             }];
         } else {
         }
     }];
