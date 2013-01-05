@@ -1294,6 +1294,7 @@
 				28B609BA168E5DA100C92AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F81386741539731F003A83F9 /* Build configuration list for PBXAggregateTarget "Lies Damned Lies" */ = {
 			isa = XCConfigurationList;

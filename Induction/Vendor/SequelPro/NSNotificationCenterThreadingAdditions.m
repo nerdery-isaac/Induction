@@ -45,7 +45,7 @@
         [info setObject:anObject forKey:@"object"];
     }
     [[self class] performSelectorOnMainThread:@selector(_postNotificationViaDictionary:)
-                                   withObject:info 
+                                   withObject:[info autorelease]
                                 waitUntilDone:NO];
 }
 @end
